@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: SchedulerAPI
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/empresadb
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port: 8081
+
+logging:
+  level:
+    org:
+      springframework: debug

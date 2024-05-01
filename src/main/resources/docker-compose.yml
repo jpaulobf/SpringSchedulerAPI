@@ -1,0 +1,31 @@
+networks:
+  postgres:
+    external: true
+
+services:
+  db:
+    container_name: postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: root #change if necessary
+      POSTGRES_PASSWORD: password #change if necessary
+      POSTGRES_DB: empresaDB #change if necessary
+    ports:
+      - "5432:5432" #change *before* the : if necessary
+    networks:
+      - postgres
+
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com #only needed for logon so no need to change
+      PGADMIN_DEFAULT_PASSWORD: a-good-password #change
+    ports:
+      - "80:80" #change *before* the : if necessary
+    networks:
+      - postgres
+    depends_on:
+      - db
